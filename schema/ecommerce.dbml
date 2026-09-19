@@ -1,0 +1,66 @@
+Table Customer {
+  CustomerID int [pk]
+  Name varchar
+  Email varchar
+  PhoneNumber varchar
+}
+
+Table Order {
+  OrderID int [pk]
+  OrderDate date
+  OrderStatus varchar
+  TotalAmount decimal
+  CustomerID int [ref: > Customer.CustomerID]
+}
+
+Table Category {
+  CategoryID int [pk]
+  CategoryName varchar
+  Description varchar
+}
+
+Table Product {
+  ProductID int [pk]
+  ProductName varchar
+  Description varchar
+  Price decimal
+  CategoryID int [ref: > Category.CategoryID]
+}
+
+Table ShippingAddress {
+  AddressID int [pk]
+  CustomerID int [ref: > Customer.CustomerID]
+  Street varchar
+  City varchar
+  PostalCode varchar
+  Country varchar
+}
+
+Table OrderItem {
+  OrderItemID int [pk]
+  OrderID int [ref: > Order.OrderID]
+  ProductID int [ref: > Product.ProductID]
+  Quantity int
+}
+
+Table ShoppingCart {
+  CartID int [pk]
+  CustomerID int [ref: > Customer.CustomerID]
+  CreatedDate date
+  CartStatus varchar
+}
+
+Table CartItem {
+  CartItemID int [pk]
+  CartID int [ref: > ShoppingCart.CartID]
+  ProductID int [ref: > Product.ProductID]
+  Quantity int
+}
+
+Table Inventory {
+  InventoryID int [pk]
+  ProductID int [ref: > Product.ProductID]
+  QuantityInStock int
+  ReorderLevel int
+  LastUpdated date
+}
