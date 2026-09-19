@@ -10,7 +10,7 @@ Table Order {
   OrderDate date
   OrderStatus varchar
   TotalAmount decimal
-  CustomerID int [ref: > Customer.CustomerID]
+  CustomerID int [ref: > Customer.CustomerID, not null]
 }
 
 Table Category {
@@ -24,12 +24,12 @@ Table Product {
   ProductName varchar
   Description varchar
   Price decimal
-  CategoryID int [ref: > Category.CategoryID]
+  CategoryID int [ref: > Category.CategoryID, not null]
 }
 
 Table ShippingAddress {
   AddressID int [pk]
-  CustomerID int [ref: > Customer.CustomerID]
+  CustomerID int [ref: > Customer.CustomerID, not null]
   Street varchar
   City varchar
   PostalCode varchar
@@ -38,28 +38,28 @@ Table ShippingAddress {
 
 Table OrderItem {
   OrderItemID int [pk]
-  OrderID int [ref: > Order.OrderID]
-  ProductID int [ref: > Product.ProductID]
+  OrderID int [ref: > Order.OrderID, not null]
+  ProductID int [ref: > Product.ProductID, not null]
   Quantity int
 }
 
 Table ShoppingCart {
   CartID int [pk]
-  CustomerID int [ref: > Customer.CustomerID]
+  CustomerID int [ref: > Customer.CustomerID, not null]
   CreatedDate date
   CartStatus varchar
 }
 
 Table CartItem {
   CartItemID int [pk]
-  CartID int [ref: > ShoppingCart.CartID]
-  ProductID int [ref: > Product.ProductID]
+  CartID int [ref: > ShoppingCart.CartID, not null]
+  ProductID int [ref: > Product.ProductID, not null]
   Quantity int
 }
 
 Table Inventory {
   InventoryID int [pk]
-  ProductID int [ref: > Product.ProductID]
+  ProductID int [ref: > Product.ProductID, not null]
   QuantityInStock int
   ReorderLevel int
   LastUpdated date
