@@ -55,3 +55,5 @@ The database schema is represented using DBML and can be used to visualize the r
 ## Status
 
 Initial database design completed. Future development will include SQL implementation, sample data, and database queries.
+
+[Open the live ERD in dbdiagram.io](https://dbdiagram.io/d/6aae3430943b561dd48916ec)
